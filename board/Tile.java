@@ -16,6 +16,10 @@ public class Tile {
         this.piece = piece;
     }
 
+    public void clear() {
+        this.setPiece(null);
+    }
+
     public boolean isEmpty() {
         return this.getPiece() == null;
     }

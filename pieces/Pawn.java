@@ -27,7 +27,9 @@ public class Pawn extends Piece {
         List<Tile> adjacentTiles = board.getHorizontalTiles(this.getX(), this.getY());
         for (Tile tile : adjacentTiles) {
             if (tile.getPiece() instanceof Pawn target) {
-                if (this.getY() == 4 && target.isCanBePassant() && target.getColor() != this.getColor())
+//                first if statement is checking if
+                boolean isOnValidRow = (this.getColor() == TeamColor.BLACK && this.getY() == 4) || (this.getColor() == TeamColor.WHITE && this.getY() == 3);
+                if (isOnValidRow && target.isCanBePassant() && target.getColor() != this.getColor())
                     positions.add(List.of(target.getX(), target.getY()));
             }
         }
@@ -118,5 +120,20 @@ public class Pawn extends Piece {
             this.setCanBePassant(false);
         }
         super.move(x, y, board);
+    }
+
+    public void passant(Pawn target, GameBoard board) {
+        Tile tile = board.getTile(target.getX(), target.getY());
+        tile.clear();
+        int newX = target.getX();
+        int newY;
+        if (this.getColor() == TeamColor.WHITE) {
+//            subtract
+            newY = this.getY() - 1;
+        } else {
+//            add
+            newY = this.getY() + 1;
+        }
+        super.move(newX, newY, board);
     }
 }

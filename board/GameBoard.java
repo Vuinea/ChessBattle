@@ -29,7 +29,7 @@ public class GameBoard {
         Tile tile = this.getTile(x, y);
 //        reseting the current tile that the piece is on
         Tile originalTile = this.getTile(piece.getX(), piece.getY());
-        originalTile.setPiece(null);
+        originalTile.clear();
         tile.setPiece(piece);
         piece.setPos(x, y);
     }
