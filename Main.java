@@ -2,7 +2,6 @@ import board.GameBoard;
 import pieces.Pawn;
 import pieces.TeamColor;
 
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,8 +17,11 @@ public class Main {
         board.setTile(2, 2, thirdPawn);
         board.setTile(1, 3, fourthPawn);
 
-        List<List<Integer>> possibleMoves = secondPawn.getPossibleMoves(board);
-        System.out.println(possibleMoves);
+        System.out.println(myPawn.getY());
+        myPawn.move(2, myPawn.getY() + 2, board, true);
+        System.out.println(myPawn.getY());
+        System.out.println(myPawn.isTwoSpacesMoved());
+
 
 //        board.printBoard();
 

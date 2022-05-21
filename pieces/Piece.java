@@ -1,5 +1,7 @@
 package pieces;
 
+import board.GameBoard;
+
 public abstract class Piece {
     private int x;
     private int y;
@@ -45,7 +47,9 @@ public abstract class Piece {
         this.draggable = draggable;
     }
 
-
+    public void move(int x, int y, GameBoard board) {
+        board.setTile(x, y, this);
+    }
 }
 
 

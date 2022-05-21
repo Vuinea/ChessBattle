@@ -12,13 +12,6 @@ public class GameBoard {
                 row[i] = new Tile(null);
             }
         }
-//        for (int i = 0; i < this.getBoard().length; i++) {
-//            Tile[] row = this.getBoard()[i];
-//            for (int j = 0; j < row.length; j++) {
-//                Tile tile = new Tile(null);
-//                row[j] = tile;
-//            }
-//        }
     }
 
     public Tile[][] getBoard() {
@@ -44,7 +37,7 @@ public class GameBoard {
         }
     }
 
-//    making this for visualisation delete later
+    //    making this for visualisation delete later
     public void printBoard() {
         for (Tile[] row : this.getBoard()) {
             System.out.println("\n");

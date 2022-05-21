@@ -7,14 +7,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
+//    these attributes are for En Passant
     private boolean twoSpacesMoved;
+    private int originalX;
+    private int originalY;
 
     public Pawn(TeamColor c, boolean d) {
         super(c, d);
     }
 
+    public boolean isTwoSpacesMoved() {
+        return twoSpacesMoved;
+    }
+
     public void setTwoSpacesMoved(boolean twoSpacesMoved) {
         this.twoSpacesMoved = twoSpacesMoved;
+    }
+
+    private int getOriginalX() {
+        return this.originalX;
+    }
+
+    private void setOriginalX(int x) {
+        this.originalX = x;
+    }
+
+    private int getOriginalY() {
+        return this.originalY;
+    }
+
+    private void setOriginalY(int y) {
+        this.originalY = y;
     }
 
     //    helper function to check if the target can be attacked
@@ -86,5 +109,12 @@ public class Pawn extends Piece {
         return moves;
     }
 
-
+    public void move(int x, int y, GameBoard board, boolean firstMove) {
+        if (firstMove) {
+            this.setOriginalX(this.getX());
+            this.setOriginalY(this.getY());
+            this.setTwoSpacesMoved(y - 2 == this.getY());
+        }
+        super.move(x, y, board);
+    }
 }
