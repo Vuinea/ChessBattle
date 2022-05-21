@@ -7,37 +7,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
-//    these attributes are for En Passant
-    private boolean twoSpacesMoved;
-    private int originalX;
-    private int originalY;
+    //    these attributes are for En Passant
+    private boolean canBePassant;
 
     public Pawn(TeamColor c, boolean d) {
         super(c, d);
     }
 
-    public boolean isTwoSpacesMoved() {
-        return twoSpacesMoved;
+    public boolean isCanBePassant() {
+        return canBePassant;
     }
 
-    public void setTwoSpacesMoved(boolean twoSpacesMoved) {
-        this.twoSpacesMoved = twoSpacesMoved;
+    public void setCanBePassant(boolean canBePassant) {
+        this.canBePassant = canBePassant;
     }
 
-    private int getOriginalX() {
-        return this.originalX;
-    }
-
-    private void setOriginalX(int x) {
-        this.originalX = x;
-    }
-
-    private int getOriginalY() {
-        return this.originalY;
-    }
-
-    private void setOriginalY(int y) {
-        this.originalY = y;
+    public List<List<Integer>> getPassantPos(GameBoard board) {
+        List<List<Integer>> positions = new ArrayList<>();
+        List<Tile> adjacentTiles = board.getHorizontalTiles(this.getX(), this.getY());
+        for (Tile tile : adjacentTiles) {
+            if (tile.getPiece() instanceof Pawn target) {
+                if (this.getY() == 4 && target.isCanBePassant() && target.getColor() != this.getColor())
+                    positions.add(List.of(target.getX(), target.getY()));
+            }
+        }
+        return positions;
     }
 
     //    helper function to check if the target can be attacked
@@ -60,8 +54,7 @@ public class Pawn extends Piece {
             Tile leftTile = board.getTile(minusX, addY);
             Tile rightTile = board.getTile(addX, addY);
             return this.tileCanBeAttacked(leftTile) || this.tileCanBeAttacked(rightTile);
-        }
-        else if (leftTileExists) {
+        } else if (leftTileExists) {
             Tile leftTile = board.getTile(minusX, addY);
             return this.tileCanBeAttacked(leftTile);
 
@@ -106,14 +99,23 @@ public class Pawn extends Piece {
             }
         }
 
+//        checking the En Passsant
+        moves.addAll(this.getPassantPos(board));
+
         return moves;
     }
 
     public void move(int x, int y, GameBoard board, boolean firstMove) {
         if (firstMove) {
-            this.setOriginalX(this.getX());
-            this.setOriginalY(this.getY());
-            this.setTwoSpacesMoved(y - 2 == this.getY());
+            int newPos;
+            if (this.getColor() == TeamColor.WHITE) {
+                newPos = y + 2;
+            } else {
+                newPos = y - 2;
+            }
+            this.setCanBePassant(newPos == this.getY());
+        } else {
+            this.setCanBePassant(false);
         }
         super.move(x, y, board);
     }

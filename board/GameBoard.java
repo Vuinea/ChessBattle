@@ -2,6 +2,9 @@ package board;
 
 import pieces.Piece;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameBoard {
     final Tile[][] board;
 
@@ -19,11 +22,14 @@ public class GameBoard {
     }
 
     public Tile getTile(int x, int y) {
-        return this.getBoard()[x][y];
+        return this.getBoard()[y][x];
     }
 
     public void setTile(int x, int y, Piece piece) {
-        Tile tile = this.getBoard()[x][y];
+        Tile tile = this.getTile(x, y);
+//        reseting the current tile that the piece is on
+        Tile originalTile = this.getTile(piece.getX(), piece.getY());
+        originalTile.setPiece(null);
         tile.setPiece(piece);
         piece.setPos(x, y);
     }
@@ -35,6 +41,20 @@ public class GameBoard {
         } catch (IndexOutOfBoundsException e) {
             return false;
         }
+    }
+
+    public List<Tile> getHorizontalTiles(int x, int y) {
+        Tile currentTile = this.getTile(x, y);
+        List<Tile> horizontalTiles = new ArrayList<>();
+        if (this.isValidTile(x+1, y)) {
+            Tile leftTile = this.getTile(x+1, y);
+            horizontalTiles.add(leftTile);
+        }
+        if (this.isValidTile(x-1, y)) {
+            Tile rightTile = this.getTile(x-1, y);
+            horizontalTiles.add(rightTile);
+        }
+        return horizontalTiles;
     }
 
     //    making this for visualisation delete later
