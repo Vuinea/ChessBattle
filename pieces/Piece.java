@@ -8,9 +8,9 @@ public abstract class Piece {
     final TeamColor color;
     private boolean draggable;
 
-    public Piece(TeamColor c, boolean d) {
+    public Piece(TeamColor c, boolean draggable) {
         this.color = c;
-        this.draggable = d;
+        this.draggable = draggable;
     }
 
     public int getX() {
