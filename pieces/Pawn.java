@@ -10,8 +10,8 @@ public class Pawn extends Piece {
     //    these attributes are for En Passant
     private boolean canBePassant;
 
-    public Pawn(TeamColor c, boolean d) {
-        super(c, d);
+    public Pawn(TeamColor c, boolean draggable) {
+        super(c, draggable);
     }
 
     public void putOnBoard(GameBoard board) {

@@ -1,6 +1,8 @@
 package board;
 
+import pieces.Pawn;
 import pieces.Piece;
+import pieces.TeamColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +12,20 @@ public class GameBoard {
 
     public GameBoard() {
         this.board = new Tile[8][8];
+//        creating initial tiles
         for (Tile[] row : this.getBoard()) {
             for (int i = 0; i < row.length; i++) {
                 row[i] = new Tile(null);
             }
+        }
+        for (int i = 0; i < this.getBoard()[1].length; i++) {
+            Pawn pawn = new Pawn(TeamColor.BLACK, true);
+            pawn.putOnBoard(this);
+        }
+
+        for (int i = 0; i < this.getBoard()[6].length; i++) {
+            Pawn pawn = new Pawn(TeamColor.WHITE, true);
+            pawn.putOnBoard(this);
         }
     }
 
