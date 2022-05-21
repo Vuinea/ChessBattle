@@ -14,6 +14,21 @@ public class Pawn extends Piece {
         super(c, d);
     }
 
+    public void putOnBoard(GameBoard board) {
+        int currentY;
+        if (this.getColor() == TeamColor.WHITE) {
+            currentY = 6;
+        } else {
+            currentY = 1;
+        }
+//      I have to do the loop backward for some reason
+        for (int x = 7; x >= 0; x--) {
+            if (board.getTile(x, currentY).isEmpty()) {
+                board.setTile(x, currentY, this);
+            }
+        }
+    }
+
     public boolean isCanBePassant() {
         return canBePassant;
     }
@@ -27,7 +42,6 @@ public class Pawn extends Piece {
         List<Tile> adjacentTiles = board.getHorizontalTiles(this.getX(), this.getY());
         for (Tile tile : adjacentTiles) {
             if (tile.getPiece() instanceof Pawn target) {
-//                first if statement is checking if
                 boolean isOnValidRow = (this.getColor() == TeamColor.BLACK && this.getY() == 4) || (this.getColor() == TeamColor.WHITE && this.getY() == 3);
                 if (isOnValidRow && target.isCanBePassant() && target.getColor() != this.getColor())
                     positions.add(List.of(target.getX(), target.getY()));
@@ -63,12 +77,10 @@ public class Pawn extends Piece {
         } else if (rightTileExists) {
             Tile rightTile = board.getTile(addX, addY);
             return this.tileCanBeAttacked(rightTile);
-
-        }
-        return false;
+        } else return this.getPassantPos(board).size() != 0;
     }
 
-    //    pawn simple just move 1 forward and diagonal for attack
+    //    pawn simple just move 1 forward and diagonal for attack and passant if possible
     public List<List<Integer>> getPossibleMoves(GameBoard board) {
         int x = this.getX();
         int y = this.getY();

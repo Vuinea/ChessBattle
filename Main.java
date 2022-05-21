@@ -9,24 +9,24 @@ public class Main {
     public static void main(String[] args) {
         GameBoard board = new GameBoard();
         Pawn myPawn = new Pawn(TeamColor.BLACK, true);
-        Pawn secondPawn = new Pawn(TeamColor.WHITE, true);
+        Pawn secondPawn = new Pawn(TeamColor.BLACK, true);
         Pawn thirdPawn = new Pawn(TeamColor.WHITE, true);
-        Pawn fourthPawn = new Pawn(TeamColor.BLACK, true);
+        Pawn fourthPawn = new Pawn(TeamColor.WHITE, true);
 
-//        black pawns
-        board.setTile(0, 1, myPawn);
-        board.setTile(1, 1, fourthPawn);
+        myPawn.putOnBoard(board);
+        secondPawn.putOnBoard(board);
+        thirdPawn.putOnBoard(board);
+        fourthPawn.putOnBoard(board);
 
-//        white pawns
-        board.setTile(0, 6, secondPawn);
-        board.setTile(1, 6, thirdPawn);
-
+//        myPawn.move(myPawn.getX(), myPawn.getY() + 2, board, true);
+//        myPawn.move(myPawn.getX(), myPawn.getY() + 1, board);
+//        fourthPawn.move(fourthPawn.getX(), fourthPawn.getY() - 2, board, true);
+//        myPawn.passant(thirdPawn, board);
+        fourthPawn.move(fourthPawn.getX(), fourthPawn.getY() - 2, board, true);
+        fourthPawn.move(fourthPawn.getX(), fourthPawn.getY() - 1, board);
         myPawn.move(myPawn.getX(), myPawn.getY() + 2, board, true);
-        myPawn.move(myPawn.getX(), myPawn.getY() + 1, board);
-        thirdPawn.move(thirdPawn.getX(), thirdPawn.getY() - 2, board, true);
-        List<List<Integer>> moves = myPawn.getPossibleMoves(board);
-        myPawn.passant(thirdPawn, board);
 
+        fourthPawn.passant(myPawn, board);
         board.printBoard();
 
     }
