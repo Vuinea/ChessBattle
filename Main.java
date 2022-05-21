@@ -2,7 +2,6 @@ import board.GameBoard;
 import pieces.Pawn;
 import pieces.TeamColor;
 
-import java.util.List;
 
 
 public class Main {
@@ -18,15 +17,17 @@ public class Main {
         thirdPawn.putOnBoard(board);
         fourthPawn.putOnBoard(board);
 
-//        myPawn.move(myPawn.getX(), myPawn.getY() + 2, board, true);
-//        myPawn.move(myPawn.getX(), myPawn.getY() + 1, board);
-//        fourthPawn.move(fourthPawn.getX(), fourthPawn.getY() - 2, board, true);
-//        myPawn.passant(thirdPawn, board);
-        fourthPawn.move(fourthPawn.getX(), fourthPawn.getY() - 2, board, true);
-        fourthPawn.move(fourthPawn.getX(), fourthPawn.getY() - 1, board);
-        myPawn.move(myPawn.getX(), myPawn.getY() + 2, board, true);
+//        myPawn.move(0, 2, board, true);
+//        myPawn.move(0, 1, board, false);
+//        fourthPawn.move(0, 2, board, true);
+//        myPawn.passant(fourthPawn, board);
 
+//        always include firstMove because otherwise it will use the piece move(), which is not what you want
+        fourthPawn.move(0, 2, board, true);
+        fourthPawn.move(0, 1, board, false);
+        myPawn.move(0, 2, board, true);
         fourthPawn.passant(myPawn, board);
+
         board.printBoard();
 
     }

@@ -119,21 +119,25 @@ public class Pawn extends Piece {
         return moves;
     }
 
-    public void move(int x, int y, GameBoard board, boolean firstMove) {
+    public void move(int xSpaces, int ySpaces, GameBoard board, boolean firstMove) {
+        int newX = this.getX() + xSpaces;
+        int newY;
+        if (this.getColor() == TeamColor.WHITE) {
+            newY = this.getY() - ySpaces;
+
+        } else {
+            newY = this.getY() + ySpaces;
+        }
         if (firstMove) {
-            int newPos;
-            if (this.getColor() == TeamColor.WHITE) {
-                newPos = y + 2;
-            } else {
-                newPos = y - 2;
-            }
-            this.setCanBePassant(newPos == this.getY());
+//            checking if the player is moving 2 spaces
+            this.setCanBePassant(ySpaces == 2);
         } else {
             this.setCanBePassant(false);
         }
-        super.move(x, y, board);
+        super.move(newX, newY, board);
     }
 
+//    use method instead of move
     public void passant(Pawn target, GameBoard board) {
         Tile tile = board.getTile(target.getX(), target.getY());
         tile.clear();
