@@ -1,6 +1,6 @@
 package pieces;
 
-abstract public class Piece {
+public abstract class Piece {
     private int x;
     private int y;
     final TeamColor color;

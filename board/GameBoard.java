@@ -35,13 +35,24 @@ public class GameBoard {
         piece.setPos(x, y);
     }
 
+    public boolean isValidTile(int x, int y) {
+        try {
+            this.getTile(x, y);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
+    }
+
 //    making this for visualisation delete later
     public void printBoard() {
         for (Tile[] row : this.getBoard()) {
             System.out.println("\n");
+            System.out.print("[");
             for (Tile tile : row) {
-                System.out.print(tile.getPiece() + " ");
+                System.out.print(tile.getPiece() + ", ");
             }
+            System.out.print("]");
         }
     }
 }

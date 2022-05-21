@@ -10,17 +10,24 @@ public class Main {
         Pawn myPawn = new Pawn(TeamColor.BLACK, true);
         Pawn secondPawn = new Pawn(TeamColor.WHITE, true);
         Pawn thirdPawn = new Pawn(TeamColor.WHITE, true);
+        Pawn fourthPawn = new Pawn(TeamColor.BLACK, true);
+
 
         board.setTile(1, 1, myPawn);
         board.setTile(0, 2, secondPawn);
         board.setTile(2, 2, thirdPawn);
-        List<List<Integer>> moves = myPawn.getPossibleMoves(board);
+        board.setTile(1, 3, fourthPawn);
+
+        List<List<Integer>> possibleMoves = secondPawn.getPossibleMoves(board);
+        System.out.println(possibleMoves);
+
+//        board.printBoard();
+
     }
 
 
 //    move this to GameBoard later
 //    public static boolean isPassant(List<Integer> row) {
-////        TODO: Add attribute to pawn class that tracks whether the first move was 2 spaces or 1
 //                int currentTile;
 //                int nextTile;
 //                for (int i = 0; i < row.size()-1; i++) {
