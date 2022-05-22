@@ -1,7 +1,6 @@
 import board.GameBoard;
 import pieces.Knight;
 import pieces.Pawn;
-import pieces.Piece;
 import pieces.TeamColor;
 
 import java.util.List;
@@ -13,6 +12,8 @@ public class Main {
         // Black Knights
         Knight knight1 = new Knight(TeamColor.BLACK, true);
         Knight knight2 = new Knight(TeamColor.BLACK, true);
+        Pawn testPawn = (Pawn) board.getTile(2, 1).getPiece();
+        testPawn.move(0, 1, board, false);
         board.setTile(1, 0, knight1);
         board.setTile(6, 0, knight2);
 
@@ -24,6 +25,6 @@ public class Main {
 
         System.out.println(knight1.getPossibleMoves(board));
 
-//        board.printBoard();
+        board.printBoard();
     }
 }

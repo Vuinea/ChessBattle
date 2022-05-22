@@ -80,7 +80,7 @@ public class Pawn extends Piece {
         } else return this.getPassantPos(board).size() != 0;
     }
 
-    //    pawn simple just move 1 forward and diagonal for attack and passant if possible
+    //    pawn move 1 forward and diagonal for attack and passant if possible
     public List<List<Integer>> getPossibleMoves(GameBoard board) {
         int x = this.getX();
         int y = this.getY();
@@ -113,7 +113,7 @@ public class Pawn extends Piece {
             }
         }
 
-//        checking the En Passsant
+//        adding the En Passsant
         moves.addAll(this.getPassantPos(board));
 
         return moves;
