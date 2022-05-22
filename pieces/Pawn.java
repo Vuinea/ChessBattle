@@ -29,7 +29,7 @@ public class Pawn extends Piece {
         }
     }
 
-    public boolean isCanBePassant() {
+    public boolean canBePassant() {
         return canBePassant;
     }
 
@@ -43,7 +43,7 @@ public class Pawn extends Piece {
         for (Tile tile : adjacentTiles) {
             if (tile.getPiece() instanceof Pawn target) {
                 boolean isOnValidRow = (this.getColor() == TeamColor.BLACK && this.getY() == 4) || (this.getColor() == TeamColor.WHITE && this.getY() == 3);
-                if (isOnValidRow && target.isCanBePassant() && target.getColor() != this.getColor())
+                if (isOnValidRow && target.canBePassant() && target.getColor() != this.getColor())
                     positions.add(List.of(target.getX(), target.getY()));
             }
         }
@@ -142,14 +142,7 @@ public class Pawn extends Piece {
         Tile tile = board.getTile(target.getX(), target.getY());
         tile.clear();
         int newX = target.getX();
-        int newY;
-        if (this.getColor() == TeamColor.WHITE) {
-//            subtract
-            newY = this.getY() - 1;
-        } else {
-//            add
-            newY = this.getY() + 1;
-        }
+        int newY = target.getY() + this.getColor().getValue();
         super.move(newX, newY, board);
     }
 }

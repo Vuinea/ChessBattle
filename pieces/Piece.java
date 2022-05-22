@@ -2,6 +2,8 @@ package pieces;
 
 import board.GameBoard;
 
+import java.util.List;
+
 public abstract class Piece {
     private int x;
     private int y;
@@ -50,6 +52,9 @@ public abstract class Piece {
     public void move(int x, int y, GameBoard board) {
         board.setTile(x, y, this);
     }
+
+    public abstract List<List<Integer>> getPossibleMoves(GameBoard board);
+
 }
 
 

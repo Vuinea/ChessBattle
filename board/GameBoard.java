@@ -18,18 +18,8 @@ public class GameBoard {
                 row[i] = new Tile(null);
             }
         }
+        initPawns();
 
-//        adding the black pawns
-        for (int i = 0; i < this.getBoard()[1].length; i++) {
-            Pawn pawn = new Pawn(TeamColor.BLACK, true);
-            pawn.putOnBoard(this);
-        }
-
-//        adding the white pawns
-        for (int i = 0; i < this.getBoard()[6].length; i++) {
-            Pawn pawn = new Pawn(TeamColor.WHITE, true);
-            pawn.putOnBoard(this);
-        }
     }
 
     public Tile[][] getBoard() {
@@ -61,15 +51,29 @@ public class GameBoard {
     public List<Tile> getHorizontalTiles(int x, int y) {
         Tile currentTile = this.getTile(x, y);
         List<Tile> horizontalTiles = new ArrayList<>();
-        if (this.isValidTile(x+1, y)) {
-            Tile leftTile = this.getTile(x+1, y);
+        if (this.isValidTile(x + 1, y)) {
+            Tile leftTile = this.getTile(x + 1, y);
             horizontalTiles.add(leftTile);
         }
-        if (this.isValidTile(x-1, y)) {
-            Tile rightTile = this.getTile(x-1, y);
+        if (this.isValidTile(x - 1, y)) {
+            Tile rightTile = this.getTile(x - 1, y);
             horizontalTiles.add(rightTile);
         }
         return horizontalTiles;
+    }
+
+    private void initPawns() {
+        //        adding the black pawns
+        for (int i = 0; i < this.getBoard()[1].length; i++) {
+            Pawn pawn = new Pawn(TeamColor.BLACK, true);
+            pawn.putOnBoard(this);
+        }
+
+//        adding the white pawns
+        for (int i = 0; i < this.getBoard()[6].length; i++) {
+            Pawn pawn = new Pawn(TeamColor.WHITE, true);
+            pawn.putOnBoard(this);
+        }
     }
 
     //    making this for visualisation delete later
@@ -83,4 +87,5 @@ public class GameBoard {
             System.out.print("]");
         }
     }
+
 }
