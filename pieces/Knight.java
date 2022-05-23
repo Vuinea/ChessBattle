@@ -4,6 +4,7 @@ import board.GameBoard;
 import board.Tile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Knight extends Piece {
@@ -13,70 +14,31 @@ public class Knight extends Piece {
 
     public List<List<Integer>> getPossibleMoves(GameBoard board) {
         List<List<Integer>> moves = new ArrayList<>();
-        int currentX = this.getX() + 1;
+        int x = this.getX();
+        int y = this.getY();
         int currentY;
-
-        if (this.getColor() == TeamColor.WHITE) {
-            currentY = this.getY() - 2;
-        } else {
-            currentY = this.getY() + 2;
-        }
+        TeamColor color = this.getColor();
+        int colorValue = color.getValue();
 
         Tile currentTile;
 
-        if (board.isValidTile(currentX, currentY)) {
-            currentTile = board.getTile(currentX, currentY);
-            if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != this.getColor())) {
-                moves.add(List.of(currentX, currentY));
+        for (int currentX = x - 2; currentX < x + 3; currentX++) {
+            if (currentX == x) continue;
+            if (currentX == x - 1 || currentX == x + 1) {
+//                checking if y should be positive or negative
+                currentY = y + 2 * colorValue;
+            } else {
+                currentY = y + colorValue;
             }
-        }
 
-            currentX = this.getX() - 1;
-
-        if (board.isValidTile(currentX, currentY)) {
-            currentTile = board.getTile(currentX, currentY);
-            if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != this.getColor())) {
-                moves.add(List.of(currentX, currentY));
+            if (board.isValidTile(currentX, currentY)) {
+                currentTile = board.getTile(currentX, currentY);
+                if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != color)) {
+                    moves.add(Arrays.asList(currentX, currentY));
+                }
             }
+
         }
-
-        currentX = this.getX() + 2;
-        currentY = this.getY() + 1;
-
-        if (board.isValidTile(currentX, currentY)) {
-            currentTile = board.getTile(currentX, currentY);
-            if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != this.getColor())) {
-                moves.add(List.of(currentX, currentY));
-            }
-        }
-
-        currentY = this.getY() - 1;
-
-        if (board.isValidTile(currentX, currentY)) {
-            currentTile = board.getTile(currentX, currentY);
-            if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != this.getColor())) {
-                moves.add(List.of(currentX, currentY));
-            }
-        }
-
-        currentX = this.getX() - 2;
-
-        if (board.isValidTile(currentX, currentY)) {
-            currentTile = board.getTile(currentX, currentY);
-            if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != this.getColor())) {
-                moves.add(List.of(currentX, currentY));
-            }
-        }
-
-        currentY = this.getY() + 1;
-
-        if (board.isValidTile(currentX, currentY)) {
-            currentTile = board.getTile(currentX, currentY);
-            if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != this.getColor())) {
-                moves.add(List.of(currentX, currentY));
-            }
-        }
-
 
         return moves;
     }
