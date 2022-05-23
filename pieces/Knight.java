@@ -4,7 +4,6 @@ import board.GameBoard;
 import board.Tile;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Knight extends Piece {
@@ -34,7 +33,7 @@ public class Knight extends Piece {
             if (board.isValidTile(currentX, currentY)) {
                 currentTile = board.getTile(currentX, currentY);
                 if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != color)) {
-                    moves.add(Arrays.asList(currentX, currentY));
+                    moves.add(List.of(currentX, currentY));
                 }
             }
 
