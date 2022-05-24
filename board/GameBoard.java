@@ -1,5 +1,6 @@
 package board;
 
+import pieces.Knight;
 import pieces.Pawn;
 import pieces.Piece;
 import pieces.TeamColor;
@@ -18,7 +19,8 @@ public class GameBoard {
                 row[i] = new Tile(null);
             }
         }
-        initPawns();
+        this.initPawns();
+        this.initKnights();
 
     }
 
@@ -74,6 +76,20 @@ public class GameBoard {
             Pawn pawn = new Pawn(TeamColor.WHITE, true);
             pawn.putOnBoard(this);
         }
+    }
+
+    private void initKnights() {
+        Knight light1 = new Knight(TeamColor.WHITE, true);
+        Knight light2 = new Knight(TeamColor.WHITE, true);
+        this.setTile(1, 7, light1);
+        this.setTile(6, 7, light2);
+
+        Knight dark1 = new Knight(TeamColor.BLACK, true);
+        Knight dark2 = new Knight(TeamColor.BLACK, true);
+        this.setTile(1, 0, dark1);
+        this.setTile(6, 0, dark2);
+
+
     }
 
     //    making this for visualisation delete later
