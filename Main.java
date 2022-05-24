@@ -23,6 +23,8 @@ public class Main {
         board.setTile(1, 7, knight3);
         board.setTile(6, 7, knight4);
 
+        knight1.move(0, 2, board);
+
         System.out.println(knight1.getPossibleMoves(board));
 
         board.printBoard();

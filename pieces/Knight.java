@@ -25,7 +25,15 @@ public class Knight extends Piece {
             if (currentX == x) continue;
             if (currentX == x - 1 || currentX == x + 1) {
 //                checking if y should be positive or negative
-                currentY = y + 2 * colorValue;
+                currentY = y + 2;
+
+                if (board.isValidTile(currentX, currentY)) {
+                    currentTile = board.getTile(currentX, currentY);
+                    if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != color)) {
+                        moves.add(List.of(currentX, currentY));
+                    }
+                }
+                currentY = y - 2;
             } else {
                 currentY = y + colorValue;
             }
