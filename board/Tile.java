@@ -5,8 +5,21 @@ import pieces.TeamColor;
 
 public class Tile {
     private Piece piece;
-    public Tile( Piece piece) {
+    final int x;
+    final int y;
+
+    public Tile(int x, int y, Piece piece) {
+        this.x = x;
+        this.y = y;
         this.piece = piece;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
     }
 
     public Piece getPiece() {

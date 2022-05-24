@@ -12,11 +12,18 @@ public class GameBoard {
     final Tile[][] board;
 
     public GameBoard() {
+        Tile[] row;
         this.board = new Tile[8][8];
 //        creating initial tiles
-        for (Tile[] row : this.getBoard()) {
-            for (int i = 0; i < row.length; i++) {
-                row[i] = new Tile(null);
+//        for (Tile[] row : this.getBoard()) {
+//            for (int i = 0; i < row.length; i++) {
+//                row[i] = new Tile(null);
+//            }
+//        }
+        for (int i = 0; i < this.getBoard().length; i++) {
+            row = this.getBoard()[i];
+            for (int j = 0; j < row.length; j++) {
+                this.getBoard()[i][j] = new Tile(j, i, null);
             }
         }
         this.initPawns();
