@@ -1,6 +1,7 @@
 package board;
 
 import pieces.Piece;
+import pieces.TeamColor;
 
 public class Tile {
     private Piece piece;
@@ -23,4 +24,10 @@ public class Tile {
     public boolean isEmpty() {
         return this.getPiece() == null;
     }
+
+    public boolean canMoveTo(TeamColor pieceColor) {
+        boolean empty = this.isEmpty();
+        return empty || this.getPiece().getColor() != pieceColor;
+    }
+
 }

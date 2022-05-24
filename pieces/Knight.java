@@ -29,7 +29,7 @@ public class Knight extends Piece {
 
                 if (board.isValidTile(currentX, currentY)) {
                     currentTile = board.getTile(currentX, currentY);
-                    if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != color)) {
+                    if (currentTile.canMoveTo(color)) {
                         moves.add(List.of(currentX, currentY));
                     }
                 }
@@ -40,7 +40,7 @@ public class Knight extends Piece {
 
             if (board.isValidTile(currentX, currentY)) {
                 currentTile = board.getTile(currentX, currentY);
-                if (currentTile.isEmpty() || (!currentTile.isEmpty() && currentTile.getPiece().getColor() != color)) {
+                if (currentTile.canMoveTo(color)) {
                     moves.add(List.of(currentX, currentY));
                 }
             }
