@@ -2,6 +2,7 @@ package src.main.java.pieces;
 
 import src.main.java.board.GameBoard;
 import src.main.java.board.Tile;
+import src.main.java.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,11 @@ public class Knight extends Piece {
         }
 
         return moves;
+    }
+
+    @Override
+    public String getImageName() {
+        return Utils.isWhite(this) ? "WhiteKnight.png" : "BlackKnight.png";
     }
 
     public void move(int x, int y, GameBoard board) {

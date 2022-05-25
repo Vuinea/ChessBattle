@@ -3,15 +3,23 @@ package src.main.java.board;
 import src.main.java.pieces.Piece;
 import src.main.java.pieces.TeamColor;
 
-public class Tile {
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tile extends JComponent {
     private Piece piece;
     final int x;
     final int y;
+    private final int color;
 
-    public Tile(int x, int y, Piece piece) {
+    public Tile(int x, int y, Piece piece, int color) {
         this.x = x;
         this.y = y;
         this.piece = piece;
+        // Tile uses an integer for color due to ease of use
+        this.color = color;
     }
 
     public int getX() {
@@ -49,4 +57,28 @@ public class Tile {
         return empty || this.getPiece().getColor() != pieceColor;
     }
 
+    public int getColor() {
+        if (color == 0 || color == 1) {
+            return color;
+        } else throw new IllegalArgumentException("Color must be black (1) or white (0)!");
+    }
+
+    // Paint this tile using its provided color and position
+    public void paintComponent(Graphics graphics) {
+        Color color = new Color(252, 204, 116);
+        if (this.getColor() == 1) {
+            color = new Color(138, 120, 93);
+        }
+
+        int x = (this.getX() + 3) * 50;
+        int y = (this.getY() + 3) * 50;
+
+        graphics.setColor(color);
+        graphics.fillRect(x, y, 50, 50);
+
+        if (!this.isEmpty()) {
+            Image image = this.getPiece().getImage();
+            graphics.drawImage(image, x, y, 50, 50, null);
+        }
+    }
 }

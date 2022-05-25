@@ -18,4 +18,20 @@ public class Utils {
         String color = piece.getColor() == TeamColor.WHITE ? WHITE : BLACK;
         System.out.println(color + type + RESET);
     }
+
+    public static boolean isWhite(Piece piece) {
+        return piece.getColor() == TeamColor.WHITE;
+    }
+
+    public static int getColorForTile(int i, int j) {
+        if (i % 2 == 0) {
+            return j % 2;
+        } else {
+            if (j % 2 == 0) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    }
 }

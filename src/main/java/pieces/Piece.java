@@ -2,6 +2,11 @@ package src.main.java.pieces;
 
 import src.main.java.board.GameBoard;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class Piece {
@@ -9,6 +14,7 @@ public abstract class Piece {
     private int y;
     final TeamColor color;
     private boolean draggable;
+    private BufferedImage image = null;
 
     public Piece(TeamColor c, boolean draggable) {
         this.color = c;
@@ -59,8 +65,21 @@ public abstract class Piece {
         board.setTile(x, y, this);
     }
 
+    public BufferedImage getImage() {
+        try {
+            if (this.image == null) {
+                this.image = ImageIO.read(getClass().getResource("/src/main/resources/" + this.getImageName()));
+            }
+        } catch (IOException e) {
+            System.out.println("No Image Found (" + e.getMessage() + ")");
+        }
+
+        return this.image;
+    }
+
     public abstract List<List<Integer>> getPossibleMoves(GameBoard board);
 
+    public abstract String getImageName();
 }
 
 

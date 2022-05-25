@@ -4,6 +4,7 @@ import src.main.java.pieces.Knight;
 import src.main.java.pieces.Pawn;
 import src.main.java.pieces.Piece;
 import src.main.java.pieces.TeamColor;
+import src.main.java.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class GameBoard {
         for (int i = 0; i < this.getBoard().length; i++) {
             row = this.getBoard()[i];
             for (int j = 0; j < row.length; j++) {
-                this.getBoard()[i][j] = new Tile(j, i, null);
+                this.getBoard()[i][j] = new Tile(j, i, null, Utils.getColorForTile(i, j));
             }
         }
         this.initPawns();

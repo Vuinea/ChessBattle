@@ -1,6 +1,7 @@
 package src.main.java;
 
 import src.main.java.board.GameBoard;
+import src.main.java.display.GameDisplay;
 import src.main.java.util.Utils;
 
 
@@ -10,5 +11,8 @@ public class Main {
     //    System.out.println(src.main.java.board.getColumn(1).get(0).getPiece());
         Utils.printPiece(board.getColumn(1).get(0).getPiece());
 //        src.main.java.board.printBoard();
+
+        GameDisplay.setBoard(board);
+        GameDisplay.create();
     }
 }
