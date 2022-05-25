@@ -15,11 +15,6 @@ public class GameBoard {
         Tile[] row;
         this.board = new Tile[8][8];
 //        creating initial tiles
-//        for (Tile[] row : this.getBoard()) {
-//            for (int i = 0; i < row.length; i++) {
-//                row[i] = new Tile(null);
-//            }
-//        }
         for (int i = 0; i < this.getBoard().length; i++) {
             row = this.getBoard()[i];
             for (int j = 0; j < row.length; j++) {
@@ -57,6 +52,7 @@ public class GameBoard {
         }
     }
 
+//    for the pawns
     public List<Tile> getHorizontalTiles(int x, int y) {
         Tile currentTile = this.getTile(x, y);
         List<Tile> horizontalTiles = new ArrayList<>();
@@ -69,6 +65,23 @@ public class GameBoard {
             horizontalTiles.add(rightTile);
         }
         return horizontalTiles;
+    }
+
+    public List<Tile> getRow(int y) {
+        return new ArrayList<>(List.of(this.getBoard()[y]));
+    }
+
+    public List<Tile> getColumn(int columnNum) {
+        Tile[][] board = this.getBoard();
+        List<Tile> column = new ArrayList<>();
+
+        Tile currentTile;
+        for (Tile[] row : board) {
+            currentTile = row[columnNum];
+            column.add(currentTile);
+        }
+
+        return column;
     }
 
     private void initPawns() {
