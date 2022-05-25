@@ -1,4 +1,4 @@
-package pieces;
+package src.main.java.pieces;
 
 import src.main.java.board.GameBoard;
 import src.main.java.board.Tile;

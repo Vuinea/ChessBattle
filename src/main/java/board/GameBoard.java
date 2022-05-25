@@ -1,9 +1,9 @@
 package src.main.java.board;
 
-import pieces.Knight;
-import pieces.Pawn;
-import pieces.Piece;
-import pieces.TeamColor;
+import src.main.java.pieces.Knight;
+import src.main.java.pieces.Pawn;
+import src.main.java.pieces.Piece;
+import src.main.java.pieces.TeamColor;
 
 import java.util.ArrayList;
 import java.util.List;

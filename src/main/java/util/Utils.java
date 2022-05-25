@@ -1,9 +1,9 @@
 package src.main.java.util;
 
-import pieces.Knight;
-import pieces.Piece;
-import pieces.Rook;
-import pieces.TeamColor;
+import src.main.java.pieces.Knight;
+import src.main.java.pieces.Piece;
+import src.main.java.pieces.Rook;
+import src.main.java.pieces.TeamColor;
 
 public class Utils {
     public static final String WHITE = "\u001B[37m";

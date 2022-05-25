@@ -1,7 +1,7 @@
 package src.main.java.board;
 
-import pieces.Piece;
-import pieces.TeamColor;
+import src.main.java.pieces.Piece;
+import src.main.java.pieces.TeamColor;
 
 public class Tile {
     private Piece piece;

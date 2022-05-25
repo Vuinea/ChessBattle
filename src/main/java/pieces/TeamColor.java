@@ -1,4 +1,4 @@
-package pieces;
+package src.main.java.pieces;
 
 public enum TeamColor {
     BLACK(1),
