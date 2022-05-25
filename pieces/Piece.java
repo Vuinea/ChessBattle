@@ -30,6 +30,12 @@ public abstract class Piece {
     public void setY(int y) {
         this.y = y;
     }
+    
+    public List<Integer> getPos() {
+        int x = this.getX();
+        int y = this.getY();
+        return new ArrayList<>(Arrays.asList(x, y));
+    }
 
 //    making this because usually you would want to update them both at the same time
     public void setPos(int x, int y) {
