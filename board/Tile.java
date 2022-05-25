@@ -21,6 +21,12 @@ public class Tile {
     public int getY() {
         return this.y;
     }
+    
+    public List<Integer> getPos() {
+        int x = this.getX();
+        int y = this.getY();
+        return new ArrayList<>(List.of(x, y));
+    }
 
     public Piece getPiece() {
         return piece;
