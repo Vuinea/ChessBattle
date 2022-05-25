@@ -1,4 +1,4 @@
-package board;
+package src.main.java.board;
 
 import pieces.Piece;
 import pieces.TeamColor;

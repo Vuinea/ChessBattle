@@ -1,6 +1,6 @@
 package pieces;
 
-import board.GameBoard;
+import src.main.java.board.GameBoard;
 
 import java.util.List;
 

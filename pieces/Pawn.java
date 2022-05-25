@@ -1,7 +1,7 @@
 package pieces;
 
-import board.GameBoard;
-import board.Tile;
+import src.main.java.board.GameBoard;
+import src.main.java.board.Tile;
 
 import java.util.ArrayList;
 import java.util.List;
