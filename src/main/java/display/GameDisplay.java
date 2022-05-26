@@ -5,12 +5,19 @@ import src.main.java.board.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameDisplay extends JPanel {
     private static GameBoard board = null;
+    private static List<List<Integer>> highlightedTiles = new ArrayList<>();
 
     public static void setBoard(GameBoard b) {
         board = b;
+    }
+
+    public static void setHighlightedTiles(List<List<Integer>> t) {
+        highlightedTiles = t;
     }
 
     public static void create() {
@@ -28,7 +35,7 @@ public class GameDisplay extends JPanel {
 
         for (Tile[] row : board.getBoard()) {
             for (Tile tile : row) {
-                tile.paintComponent(graphics);
+                tile.paintComponent(graphics, highlightedTiles.contains(tile.getPos()));
             }
         }
     }

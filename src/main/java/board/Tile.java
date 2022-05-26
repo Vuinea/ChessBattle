@@ -29,7 +29,7 @@ public class Tile extends JComponent {
     public int getY() {
         return this.y;
     }
-    
+
     public List<Integer> getPos() {
         int x = this.getX();
         int y = this.getY();
@@ -64,10 +64,13 @@ public class Tile extends JComponent {
     }
 
     // Paint this tile using its provided color and position
-    public void paintComponent(Graphics graphics) {
-        Color color = new Color(252, 204, 116);
+    public void paintComponent(Graphics graphics, boolean highlighted) {
+        Color color = new Color(232, 237, 249);
         if (this.getColor() == 1) {
-            color = new Color(138, 120, 93);
+            color = new Color(183, 192, 216);
+        }
+        if (highlighted) {
+            color = new Color(131, 77, 107);
         }
 
         int x = (this.getX() + 3) * 50;
