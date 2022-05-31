@@ -12,7 +12,6 @@ public class Main {
         Utils.printPiece(board.getColumn(1).get(0).getPiece());
 //        src.main.java.board.printBoard();
 
-        GameDisplay.setBoard(board);
-        GameDisplay.create();
+        GameDisplay.create(board);
     }
 }

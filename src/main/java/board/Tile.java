@@ -29,7 +29,7 @@ public class Tile extends JComponent {
     public int getY() {
         return this.y;
     }
-
+    
     public List<Integer> getPos() {
         int x = this.getX();
         int y = this.getY();
@@ -83,5 +83,10 @@ public class Tile extends JComponent {
             Image image = this.getPiece().getImage();
             graphics.drawImage(image, x, y, 50, 50, null);
         }
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle((this.getX() + 3) * 50, (this.getY() + 3) * 50, 50, 50);
     }
 }

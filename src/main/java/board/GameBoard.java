@@ -7,6 +7,7 @@ import src.main.java.pieces.TeamColor;
 import src.main.java.util.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameBoard {
@@ -111,6 +112,14 @@ public class GameBoard {
         this.setTile(6, 0, dark2);
 
 
+    }
+
+    public List<Tile> getAllTiles() {
+        List<Tile> list = new ArrayList<>();
+        for (Tile[] row : this.getBoard()) {
+            list.addAll(Arrays.asList(row));
+        }
+        return list;
     }
 
     //    making this for visualisation delete later

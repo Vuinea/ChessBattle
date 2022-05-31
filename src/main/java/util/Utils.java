@@ -1,9 +1,13 @@
 package src.main.java.util;
 
+import src.main.java.board.GameBoard;
+import src.main.java.board.Tile;
 import src.main.java.pieces.Knight;
 import src.main.java.pieces.Piece;
 import src.main.java.pieces.Rook;
 import src.main.java.pieces.TeamColor;
+
+import java.util.List;
 
 public class Utils {
     public static final String WHITE = "\u001B[37m";
@@ -33,5 +37,20 @@ public class Utils {
                 return 0;
             }
         }
+    }
+
+    public static boolean canMoveToTile(Piece piece, Tile tile, GameBoard board) {
+//        System.out.println(piece.getPossibleMoves(board));
+        for (List<Integer> list : piece.getPossibleMoves(board)) {
+            int x = list.get(0);
+            int y = list.get(1);
+            System.out.println(x + "," + y);
+            System.out.println(tile.getX() + "," + tile.getY());
+            if (tile.getX() == x && tile.getY() == y) {
+                System.out.println("CAN MOVE TO");
+                return true;
+            }
+        }
+        return false;
     }
 }
